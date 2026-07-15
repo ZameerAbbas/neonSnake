@@ -1,0 +1,8 @@
+# NeonSnake — robots.txt
+# IMPORTANT: Replace YOUR_DOMAIN with your actual domain after hosting.
+
+User-agent: *
+Allow: /
+
+# Sitemap location — helps Google find and index the site faster
+Sitemap: https://YOUR_DOMAIN/sitemap.xml

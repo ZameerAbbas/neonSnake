@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — NeonSnake</title>
+    <meta name="description" content="Privacy Policy for NeonSnake. Learn how we use cookies, Google AdSense, and localStorage on our free browser snake game." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://YOUR_DOMAIN/privacy.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:title"       content="Privacy Policy — NeonSnake" />
+    <meta property="og:description" content="Privacy Policy for NeonSnake free online snake game." />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://YOUR_DOMAIN/privacy.html" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        background: #020817;
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        color: #cbd5e1;
+      }
+
+      /* Animated background */
+      .bg-scene {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background:
+          radial-gradient(ellipse 80% 60% at 20% 10%, rgba(57,255,20,0.04) 0%, transparent 60%) no-repeat,
+          radial-gradient(ellipse 60% 50% at 80% 80%, rgba(0,212,255,0.03) 0%, transparent 60%) no-repeat,
+          #020817;
+      }
+
+      .glass-card {
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+      }
+
+      .neon-green { color: #39ff14; }
+      .neon-text  { color: #39ff14; text-shadow: 0 0 10px rgba(57,255,20,0.5); }
+
+      .page-title {
+        font-size: 2.25rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #39ff14, #00d4ff 60%, #bf5fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #e2e8f0;
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(57,255,20,0.15);
+      }
+
+      .prose p   { margin-bottom: 0.875rem; line-height: 1.75; color: #94a3b8; font-size: 0.9rem; }
+      .prose ul  { list-style: disc; padding-left: 1.5rem; margin-bottom: 0.875rem; }
+      .prose li  { color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.375rem; line-height: 1.6; }
+      .prose a   { color: #39ff14; text-decoration: underline; text-underline-offset: 3px; }
+      .prose a:hover { color: #00d4ff; }
+      .prose strong { color: #e2e8f0; font-weight: 600; }
+
+      .nav-link {
+        color: #64748b;
+        font-size: 0.8rem;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .nav-link:hover { color: #39ff14; }
+
+      .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background: rgba(57,255,20,0.08);
+        border: 1px solid rgba(57,255,20,0.25);
+        border-radius: 8px;
+        color: #39ff14;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .back-btn:hover {
+        background: rgba(57,255,20,0.15);
+        box-shadow: 0 0 15px rgba(57,255,20,0.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-scene" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-4 py-12">
+
+      <!-- Navigation -->
+      <nav class="flex items-center justify-between mb-10" aria-label="Site navigation">
+        <a href="index.html" class="back-btn" aria-label="Back to game">
+          ← Back to Game
+        </a>
+        <div class="flex gap-4">
+          <a href="about.html"  class="nav-link">About</a>
+          <a href="terms.html"  class="nav-link">Terms</a>
+          <a href="privacy.html" class="nav-link neon-green">Privacy</a>
+        </div>
+      </nav>
+
+      <!-- Header -->
+      <header class="mb-8">
+        <h1 class="page-title mb-2">Privacy Policy</h1>
+        <p class="text-slate-500 text-sm">
+          Last updated: <time datetime="2026-07-14">July 14, 2026</time>
+        </p>
+      </header>
+
+      <!-- Content Card -->
+      <div class="glass-card rounded-2xl p-8 space-y-8 prose">
+
+        <!-- Intro -->
+        <section>
+          <h2 class="section-title">1. Introduction</h2>
+          <p>
+            Welcome to <strong>NeonSnake</strong> ("we", "us", or "our"). This Privacy Policy
+            explains how we collect, use, and share information when you visit and play our free
+            browser Snake game at <strong>https://YOUR_DOMAIN</strong> (the "Site").
+          </p>
+          <p>
+            By using the Site, you agree to the terms of this Privacy Policy. If you do not agree,
+            please stop using the Site.
+          </p>
+        </section>
+
+        <!-- Information We Collect -->
+        <section>
+          <h2 class="section-title">2. Information We Collect</h2>
+          <p>We collect only minimal data necessary to operate the Site:</p>
+          <ul>
+            <li>
+              <strong>High Score (localStorage):</strong> Your in-game high score is stored locally
+              in your own browser using <code>localStorage</code>. This data never leaves your device
+              and is not sent to any server.
+            </li>
+            <li>
+              <strong>Usage Data (via Google AdSense / Analytics):</strong> Third-party advertising
+              partners (Google) may collect anonymised information about your visit, such as
+              pages viewed, browser type, device type, and IP address.
+            </li>
+            <li>
+              <strong>Cookies:</strong> We do not set first-party cookies. However, our advertising
+              partner (Google AdSense) may set cookies on your device. See Section 4 for details.
+            </li>
+          </ul>
+        </section>
+
+        <!-- How We Use Information -->
+        <section>
+          <h2 class="section-title">3. How We Use Information</h2>
+          <ul>
+            <li>To operate and improve the game experience.</li>
+            <li>To display advertisements via Google AdSense to support free access to the Site.</li>
+            <li>To comply with legal obligations.</li>
+          </ul>
+          <p>We do <strong>not</strong> sell, trade, or share your personal information with
+          third parties for their own marketing purposes.</p>
+        </section>
+
+        <!-- Google AdSense & Cookies -->
+        <section>
+          <h2 class="section-title">4. Google AdSense &amp; Cookies</h2>
+          <p>
+            This Site uses <strong>Google AdSense</strong>, a third-party advertising service
+            provided by Google LLC. Google AdSense uses cookies (including the DoubleClick cookie)
+            to serve ads based on your prior visits to this website and other sites on the internet.
+          </p>
+          <p>
+            Google's use of advertising cookies enables it and its partners to serve ads to you
+            based on your visit to this site and/or other sites on the Internet. You may opt out
+            of personalised advertising by visiting
+            <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">
+              Google Ads Settings
+            </a>.
+          </p>
+          <p>
+            For more information about how Google uses data when you use our Site, please visit:
+            <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">
+              How Google uses data when you use our partners' sites or apps
+            </a>.
+          </p>
+          <p>
+            You can also opt out of third-party vendor's use of cookies for personalised advertising
+            by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">
+              www.aboutads.info/choices
+            </a> or
+            <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer">
+              www.youronlinechoices.eu
+            </a> (EU users).
+          </p>
+        </section>
+
+        <!-- Third-Party Services -->
+        <section>
+          <h2 class="section-title">5. Third-Party Services</h2>
+          <p>Our Site uses the following third-party services that may collect data:</p>
+          <ul>
+            <li>
+              <strong>Google AdSense</strong> — Advertising.
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+                Google Privacy Policy
+              </a>
+            </li>
+            <li>
+              <strong>Google Fonts</strong> — Typography (fonts loaded from Google servers).
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+                Google Privacy Policy
+              </a>
+            </li>
+            <li>
+              <strong>Tailwind CSS CDN</strong> — Stylesheet (loaded from cdn.tailwindcss.com).
+            </li>
+          </ul>
+        </section>
+
+        <!-- GDPR / CCPA -->
+        <section>
+          <h2 class="section-title">6. Your Rights (GDPR &amp; CCPA)</h2>
+          <p>
+            Depending on your location, you may have the following rights regarding your data:
+          </p>
+          <ul>
+            <li><strong>Right to access</strong> — Request a copy of data held about you.</li>
+            <li><strong>Right to deletion</strong> — Request deletion of your data.</li>
+            <li><strong>Right to opt out</strong> — Opt out of personalised ads (see Section 4).</li>
+            <li>
+              <strong>Clear localStorage</strong> — You can clear your high score at any time by
+              opening your browser's Developer Tools → Application → Local Storage and deleting the
+              <code>neonsnake_highscore_v1</code> key.
+            </li>
+          </ul>
+          <p>
+            <strong>California residents (CCPA):</strong> We do not sell personal information.
+            Google AdSense data sharing is subject to Google's own CCPA compliance.
+          </p>
+        </section>
+
+        <!-- Children -->
+        <section>
+          <h2 class="section-title">7. Children's Privacy</h2>
+          <p>
+            This Site is not directed to children under the age of 13. We do not knowingly collect
+            personal information from children under 13. If you believe a child has provided us with
+            personal information, please contact us so we can delete it.
+          </p>
+        </section>
+
+        <!-- Security -->
+        <section>
+          <h2 class="section-title">8. Security</h2>
+          <p>
+            We take reasonable measures to help protect your information. However, no internet
+            transmission is 100% secure. The game stores only your high score in your local browser
+            storage and does not transmit personal data to our servers.
+          </p>
+        </section>
+
+        <!-- Changes -->
+        <section>
+          <h2 class="section-title">9. Changes to This Policy</h2>
+          <p>
+            We may update this Privacy Policy from time to time. The "Last updated" date at the
+            top of this page will reflect any changes. Continued use of the Site after changes
+            are posted constitutes your acceptance of the updated policy.
+          </p>
+        </section>
+
+        <!-- Contact -->
+        <section>
+          <h2 class="section-title">10. Contact Us</h2>
+          <p>
+            If you have any questions about this Privacy Policy, please contact us at:<br />
+            <strong>Email:</strong>
+            <a href="mailto:contact@YOUR_DOMAIN">contact@YOUR_DOMAIN</a>
+          </p>
+        </section>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-10 text-center text-slate-700 text-xs space-y-2">
+        <div class="flex justify-center gap-6">
+          <a href="index.html"   class="nav-link">Game</a>
+          <a href="about.html"   class="nav-link">About</a>
+          <a href="terms.html"   class="nav-link">Terms</a>
+          <a href="privacy.html" class="nav-link neon-green">Privacy</a>
+        </div>
+        <p>&copy; 2026 NeonSnake. All rights reserved.</p>
+      </footer>
+
+    </div>
+  </body>
+</html>

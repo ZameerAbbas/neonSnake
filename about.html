@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About NeonSnake — Free Browser Snake Game</title>
+    <meta name="description" content="Learn about NeonSnake — a modern, premium free browser Snake game built with HTML, Tailwind CSS, and Vanilla JavaScript. Play free, no download required." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://YOUR_DOMAIN/about.html" />
+    <meta property="og:title"       content="About NeonSnake — Free Browser Snake Game" />
+    <meta property="og:description" content="NeonSnake is a modern free online Snake game with neon design, 3 difficulty levels, and high score tracking." />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://YOUR_DOMAIN/about.html" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root { --neon-green: #39ff14; --neon-blue: #00d4ff; --neon-purple: #bf5fff; }
+      body { background: #020817; font-family: "Inter", sans-serif; min-height: 100vh; color: #cbd5e1; }
+      .bg-scene {
+        position: fixed; inset: 0; z-index: 0;
+        background:
+          radial-gradient(ellipse 80% 60% at 20% 10%, rgba(57,255,20,0.04) 0%, transparent 60%) no-repeat,
+          radial-gradient(ellipse 60% 50% at 80% 80%, rgba(0,212,255,0.03) 0%, transparent 60%) no-repeat,
+          radial-gradient(ellipse 50% 50% at 50% 50%, rgba(191,95,255,0.02) 0%, transparent 60%) no-repeat,
+          #020817;
+      }
+      .glass-card {
+        background: rgba(15,23,42,0.75);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+      }
+      .neon-green { color: #39ff14; }
+      .page-title {
+        font-size: 2.5rem; font-weight: 900; letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #39ff14, #00d4ff 60%, #bf5fff);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      }
+      .section-title {
+        font-size: 1.15rem; font-weight: 700; color: #e2e8f0;
+        margin-bottom: 0.875rem; padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(57,255,20,0.15);
+      }
+      .prose p   { margin-bottom: 0.875rem; line-height: 1.75; color: #94a3b8; font-size: 0.9rem; }
+      .prose ul  { list-style: disc; padding-left: 1.5rem; margin-bottom: 0.875rem; }
+      .prose li  { color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.375rem; line-height: 1.6; }
+      .prose a   { color: #39ff14; text-decoration: underline; text-underline-offset: 3px; }
+      .prose strong { color: #e2e8f0; font-weight: 600; }
+      .nav-link  { color: #64748b; font-size: 0.8rem; text-decoration: none; transition: color 0.2s; }
+      .nav-link:hover { color: #39ff14; }
+      .back-btn {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        padding: 0.5rem 1.25rem;
+        background: rgba(57,255,20,0.08); border: 1px solid rgba(57,255,20,0.25);
+        border-radius: 8px; color: #39ff14; font-size: 0.85rem; font-weight: 600;
+        text-decoration: none; transition: all 0.2s;
+      }
+      .back-btn:hover { background: rgba(57,255,20,0.15); box-shadow: 0 0 15px rgba(57,255,20,0.2); }
+
+      /* Feature cards */
+      .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+      .feature-card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 12px;
+        padding: 1.25rem;
+        transition: border-color 0.2s, background 0.2s;
+      }
+      .feature-card:hover { background: rgba(57,255,20,0.05); border-color: rgba(57,255,20,0.2); }
+      .feature-icon { font-size: 1.75rem; margin-bottom: 0.5rem; }
+      .feature-title { font-size: 0.9rem; font-weight: 700; color: #e2e8f0; margin-bottom: 0.25rem; }
+      .feature-desc  { font-size: 0.8rem; color: #64748b; line-height: 1.5; }
+
+      /* Stat badges */
+      .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+      .stat-card { text-align: center; padding: 1.25rem; background: rgba(57,255,20,0.05); border: 1px solid rgba(57,255,20,0.15); border-radius: 12px; }
+      .stat-value { font-family: "JetBrains Mono", monospace; font-size: 1.5rem; font-weight: 700; color: #39ff14; text-shadow: 0 0 10px rgba(57,255,20,0.5); }
+      .stat-label { font-size: 0.75rem; color: #64748b; margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+      /* Play CTA */
+      .play-btn {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        padding: 0.875rem 2.5rem;
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        border-radius: 10px; color: #fff; font-size: 1rem; font-weight: 700;
+        text-decoration: none; letter-spacing: 0.02em;
+        box-shadow: 0 4px 20px rgba(34,197,94,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+        transition: all 0.2s;
+      }
+      .play-btn:hover {
+        background: linear-gradient(135deg, #4ade80, #22c55e);
+        box-shadow: 0 6px 30px rgba(57,255,20,0.45);
+        transform: translateY(-2px);
+      }
+
+      /* Tech badges */
+      .tech-badge {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        padding: 0.375rem 0.875rem;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 9999px;
+        font-size: 0.8rem; color: #94a3b8; font-weight: 500;
+      }
+
+      @media (max-width: 480px) {
+        .stat-grid { grid-template-columns: 1fr; }
+        .page-title { font-size: 1.75rem; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-scene" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-3xl mx-auto px-4 py-12">
+
+      <!-- Navigation -->
+      <nav class="flex items-center justify-between mb-10" aria-label="Site navigation">
+        <a href="index.html" class="back-btn">← Play Now</a>
+        <div class="flex gap-4">
+          <a href="about.html"  class="nav-link neon-green">About</a>
+          <a href="terms.html"  class="nav-link">Terms</a>
+          <a href="privacy.html" class="nav-link">Privacy</a>
+        </div>
+      </nav>
+
+      <!-- Header -->
+      <header class="mb-10 text-center">
+        <div class="text-5xl mb-4" role="img" aria-label="Snake emoji">🐍</div>
+        <h1 class="page-title mb-3">About NeonSnake</h1>
+        <p class="text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+          A modern, premium reimagining of the classic Snake game — built with pure web technology,
+          no downloads, no accounts, just play.
+        </p>
+      </header>
+
+      <!-- Stats Row -->
+      <div class="stat-grid mb-8">
+        <div class="stat-card">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Difficulty Levels</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">∞</div>
+          <div class="stat-label">High Score Record</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">0</div>
+          <div class="stat-label">Downloads Needed</div>
+        </div>
+      </div>
+
+      <!-- What is NeonSnake -->
+      <div class="glass-card rounded-2xl p-8 mb-6 prose">
+        <h2 class="section-title">What is NeonSnake?</h2>
+        <p>
+          <strong>NeonSnake</strong> is a free, browser-based Snake game that plays instantly — no
+          download, no account, no plugins. It runs on any modern browser on desktop or mobile.
+        </p>
+        <p>
+          The classic Snake game was first popularised on Nokia phones in the late 1990s. NeonSnake
+          brings that timeless gameplay into 2026 with a premium dark aesthetic: neon glows,
+          glassmorphism UI, smooth animations, and a fully responsive design.
+        </p>
+        <p>
+          Built entirely with <strong>HTML, Tailwind CSS, and Vanilla JavaScript</strong> — no game
+          engines, no canvas libraries, no React. Just clean, fast, native web code.
+        </p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="glass-card rounded-2xl p-8 mb-6">
+        <h2 class="section-title">Features</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <div class="feature-title">Classic Gameplay</div>
+            <div class="feature-desc">Eat food, grow your snake, avoid walls and yourself.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">3 Difficulty Levels</div>
+            <div class="feature-desc">Easy, Medium, and Hard — with score multipliers.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <div class="feature-title">High Score</div>
+            <div class="feature-desc">Your best score is saved locally and persists across sessions.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⌨️</div>
+            <div class="feature-title">Keyboard Controls</div>
+            <div class="feature-desc">WASD and Arrow keys. Pause with P, restart with R.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌑</div>
+            <div class="feature-title">Dark Neon Design</div>
+            <div class="feature-desc">Glassmorphism cards, neon glow, smooth micro-animations.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <div class="feature-title">Responsive</div>
+            <div class="feature-desc">Adapts to any screen size — desktop, tablet, or phone.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to Play -->
+      <div class="glass-card rounded-2xl p-8 mb-6 prose">
+        <h2 class="section-title">How to Play</h2>
+        <ul>
+          <li>Click <strong>"Start Game"</strong> or press <strong>Enter</strong> to begin.</li>
+          <li>Use <strong>Arrow Keys</strong> or <strong>WASD</strong> to move the snake.</li>
+          <li>Eat the <strong>glowing red food</strong> to grow longer and earn points.</li>
+          <li>Avoid hitting the <strong>walls</strong> or your own <strong>tail</strong>.</li>
+          <li>Press <strong>P</strong> to pause and <strong>R</strong> to restart at any time.</li>
+          <li>Choose a difficulty level before starting — <strong>Hard</strong> earns 2.5× more points!</li>
+        </ul>
+      </div>
+
+      <!-- Technology -->
+      <div class="glass-card rounded-2xl p-8 mb-8 prose">
+        <h2 class="section-title">Technology</h2>
+        <p>
+          NeonSnake is built entirely with native web technologies — no build tools, no node_modules,
+          no server required. Open <code>index.html</code> and play.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="tech-badge">🌐 HTML5</span>
+          <span class="tech-badge">🎨 Tailwind CSS (CDN)</span>
+          <span class="tech-badge">⚙️ Vanilla JavaScript (ES6+)</span>
+          <span class="tech-badge">🔊 Web Audio API</span>
+          <span class="tech-badge">💾 localStorage</span>
+          <span class="tech-badge">🖋 Google Fonts</span>
+        </div>
+      </div>
+
+      <!-- Play CTA -->
+      <div class="text-center mb-10">
+        <a href="index.html" class="play-btn" aria-label="Play NeonSnake now">
+          🐍 Play NeonSnake Now
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <footer class="text-center text-slate-700 text-xs space-y-2">
+        <div class="flex justify-center gap-6">
+          <a href="index.html"   class="nav-link">Game</a>
+          <a href="about.html"   class="nav-link neon-green">About</a>
+          <a href="terms.html"   class="nav-link">Terms</a>
+          <a href="privacy.html" class="nav-link">Privacy</a>
+        </div>
+        <p>&copy; 2026 NeonSnake. All rights reserved.</p>
+      </footer>
+
+    </div>
+  </body>
+</html>

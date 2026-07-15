@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         PRIMARY SEO META TAGS
+         Replace YOUR_DOMAIN with your actual domain after hosting.
+    ════════════════════════════════════════════════════════════════════ -->
+    <title>NeonSnake — Play Free Snake Game Online | Neon Classic</title>
+    <meta
+      name="description"
+      content="Play NeonSnake free online — a premium Snake game with neon glow design, 3 difficulty levels, high score tracking, WASD & arrow key controls. No download needed!"
+    />
+    <meta
+      name="keywords"
+      content="snake game, neon snake game, play snake online, free snake game, browser snake game, classic snake, HTML5 snake game, snake high score"
+    />
+    <meta name="author" content="NeonSnake" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="theme-color" content="#020817" />
+
+    <!-- Canonical URL — IMPORTANT: replace with your real URL after hosting -->
+    <link rel="canonical" href="https://YOUR_DOMAIN/" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         OPEN GRAPH (Facebook, WhatsApp, LinkedIn, Discord sharing)
+    ════════════════════════════════════════════════════════════════════ -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:site_name"   content="NeonSnake" />
+    <meta property="og:locale"      content="en_US" />
+    <meta property="og:url"         content="https://YOUR_DOMAIN/" />
+    <meta property="og:title"       content="NeonSnake — Free Neon Snake Game Online" />
+    <meta
+      property="og:description"
+      content="Play the modern premium Snake game free in your browser. Neon glow design, 3 difficulty levels, high score tracking. No download needed!"
+    />
+    <!-- og:image: create a 1200×630 screenshot of your game and host it. Replace path below. -->
+    <meta property="og:image"       content="https://YOUR_DOMAIN/og-image.png" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt"    content="NeonSnake game screenshot showing neon green snake on dark board" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         TWITTER / X CARD
+    ════════════════════════════════════════════════════════════════════ -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:site"        content="@YOUR_TWITTER_HANDLE" />
+    <meta name="twitter:creator"     content="@YOUR_TWITTER_HANDLE" />
+    <meta name="twitter:title"       content="NeonSnake — Free Neon Snake Game Online" />
+    <meta
+      name="twitter:description"
+      content="Play the modern premium Snake game free in your browser. Neon glow, 3 difficulty levels, high score tracking!"
+    />
+    <meta name="twitter:image"       content="https://YOUR_DOMAIN/og-image.png" />
+    <meta name="twitter:image:alt"   content="NeonSnake — neon snake game screenshot" />
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         JSON-LD STRUCTURED DATA
+         Tells Google exactly what this page is: a VideoGame.
+         This can unlock rich results in search (star ratings, play button, etc.)
+    ════════════════════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "NeonSnake",
+      "url": "https://YOUR_DOMAIN/",
+      "description": "A modern premium Snake game with neon glow design, dark glassmorphism UI, 3 difficulty levels, high score tracking, and smooth gameplay. Play free in your browser.",
+      "image": "https://YOUR_DOMAIN/og-image.png",
+      "genre": ["Arcade", "Casual", "Browser Game"],
+      "gamePlatform": "Web Browser",
+      "operatingSystem": "Any",
+      "applicationCategory": "Game",
+      "isAccessibleForFree": true,
+      "inLanguage": "en",
+      "numberOfPlayers": {
+        "@type": "QuantitativeValue",
+        "minValue": 1,
+        "maxValue": 1
+      },
+      "playMode": "SinglePlayer",
+      "author": {
+        "@type": "Organization",
+        "name": "NeonSnake"
+      }
+    }
+    </script>
+
+    <!-- Preload critical JS for faster paint -->
+    <link rel="preload" href="script.js" as="script" />
+
+    <!-- Favicon placeholder (replace with real .ico / .png after hosting) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>" />
+
+    <!-- Author and copyright -->
+    <meta name="author"    content="NeonSnake" />
+    <meta name="copyright" content="NeonSnake" />
+    <meta name="theme-color" content="#020817" />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            colors: {
+              neon: {
+                green: "#39ff14",
+                "green-dim": "#22c55e",
+                red: "#ff2d55",
+                blue: "#00d4ff",
+                purple: "#bf5fff",
+              },
+            },
+            boxShadow: {
+              neon: "0 0 10px #39ff14, 0 0 30px #39ff14, 0 0 60px rgba(57,255,20,0.3)",
+              "neon-red":
+                "0 0 10px #ff2d55, 0 0 30px #ff2d55, 0 0 60px rgba(255,45,85,0.4)",
+              glass:
+                "0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
+              "glass-lg":
+                "0 20px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255,255,255,0.1)",
+            },
+            animation: {
+              "pulse-neon": "pulse-neon 2s ease-in-out infinite",
+              "fade-in": "fade-in 0.4s ease-out forwards",
+              "slide-up": "slide-up 0.4s ease-out forwards",
+              "score-pop": "score-pop 0.3s ease-out forwards",
+              flicker: "flicker 3s linear infinite",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* ─── Custom CSS (Non-Tailwind Specifics) ─────────────────────────── */
+
+      :root {
+        --neon-green: #39ff14;
+        --neon-red: #ff2d55;
+        --neon-blue: #00d4ff;
+        --glass-bg: rgba(15, 23, 42, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --cell-size: 20px;
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 3px;
+      }
+
+      /* ─── Keyframes ─────────────────────────────────────────────────── */
+      @keyframes pulse-neon {
+        0%,
+        100% {
+          text-shadow: 0 0 8px var(--neon-green), 0 0 20px var(--neon-green),
+            0 0 40px rgba(57, 255, 20, 0.4);
+        }
+        50% {
+          text-shadow: 0 0 4px var(--neon-green), 0 0 10px var(--neon-green);
+        }
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes score-pop {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.3);
+          color: var(--neon-green);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes flicker {
+        0%,
+        95%,
+        100% {
+          opacity: 1;
+        }
+        96% {
+          opacity: 0.8;
+        }
+        97% {
+          opacity: 1;
+        }
+        98% {
+          opacity: 0.7;
+        }
+      }
+
+      @keyframes food-pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 6px var(--neon-red), 0 0 14px var(--neon-red),
+            0 0 28px rgba(255, 45, 85, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 12px var(--neon-red), 0 0 28px var(--neon-red),
+            0 0 50px rgba(255, 45, 85, 0.8);
+        }
+      }
+
+      @keyframes grid-move {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 20px 20px;
+        }
+      }
+
+      @keyframes game-over-shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        20% {
+          transform: translateX(-8px);
+        }
+        40% {
+          transform: translateX(8px);
+        }
+        60% {
+          transform: translateX(-5px);
+        }
+        80% {
+          transform: translateX(5px);
+        }
+      }
+
+      /* ─── Base & Layout ─────────────────────────────────────────────── */
+      body {
+        background: #020817;
+        font-family: "Inter", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Animated radial background */
+      .bg-scene {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background: radial-gradient(
+              ellipse 80% 60% at 20% 10%,
+              rgba(57, 255, 20, 0.04) 0%,
+              transparent 60%
+            )
+            no-repeat,
+          radial-gradient(
+              ellipse 60% 50% at 80% 80%,
+              rgba(0, 212, 255, 0.04) 0%,
+              transparent 60%
+            )
+            no-repeat,
+          radial-gradient(
+              ellipse 40% 40% at 50% 50%,
+              rgba(191, 95, 255, 0.02) 0%,
+              transparent 60%
+            )
+            no-repeat,
+          #020817;
+      }
+
+      /* ─── Glassmorphism Card ────────────────────────────────────────── */
+      .glass-card {
+        background: rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7),
+          0 0 0 1px rgba(57, 255, 20, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      }
+
+      /* ─── Game Board ────────────────────────────────────────────────── */
+      #game-board {
+        display: grid;
+        position: relative;
+        background: #040d1a;
+        border: 1px solid rgba(57, 255, 20, 0.15);
+        box-shadow: 0 0 0 1px rgba(57, 255, 20, 0.05),
+          inset 0 0 60px rgba(0, 0, 0, 0.8),
+          0 0 30px rgba(57, 255, 20, 0.05);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      /* Subtle grid lines via CSS background */
+      #game-board::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.018) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+        background-size: var(--cell-size) var(--cell-size);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ─── Snake Cells ────────────────────────────────────────────────── */
+      .snake-cell {
+        position: absolute;
+        width: var(--cell-size);
+        height: var(--cell-size);
+        box-sizing: border-box;
+        transition: none;
+        z-index: 2;
+      }
+
+      /* Head segment */
+      .snake-head {
+        background: linear-gradient(135deg, #4fff30, #39ff14);
+        border-radius: 6px;
+        box-shadow: 0 0 8px #39ff14, 0 0 20px rgba(57, 255, 20, 0.6);
+        z-index: 3;
+      }
+
+      /* Body segment */
+      .snake-body {
+        background: linear-gradient(
+          135deg,
+          rgba(57, 255, 20, 0.9),
+          rgba(34, 197, 94, 0.75)
+        );
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(57, 255, 20, 0.4);
+      }
+
+      /* Tail — slightly dimmer */
+      .snake-tail {
+        background: linear-gradient(
+          135deg,
+          rgba(57, 255, 20, 0.6),
+          rgba(34, 197, 94, 0.4)
+        );
+        border-radius: 3px;
+        box-shadow: 0 0 3px rgba(57, 255, 20, 0.25);
+      }
+
+      /* ─── Food Cell ─────────────────────────────────────────────────── */
+      .food-cell {
+        position: absolute;
+        width: var(--cell-size);
+        height: var(--cell-size);
+        box-sizing: border-box;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .food-inner {
+        width: 14px;
+        height: 14px;
+        background: radial-gradient(circle at 35% 35%, #ff6680, #ff2d55);
+        border-radius: 50%;
+        animation: food-pulse 1.2s ease-in-out infinite;
+        box-shadow: 0 0 8px var(--neon-red), 0 0 20px rgba(255, 45, 85, 0.5);
+      }
+
+      /* ─── Overlay Panels ────────────────────────────────────────────── */
+      .overlay-panel {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(2, 8, 23, 0.88);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 10;
+        border-radius: 12px;
+        animation: fade-in 0.3s ease-out forwards;
+      }
+
+      .overlay-content {
+        animation: slide-up 0.4s ease-out forwards;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      /* ─── Buttons ────────────────────────────────────────────────────── */
+      .btn-primary {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: #fff;
+        font-weight: 600;
+        padding: 0.625rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        letter-spacing: 0.03em;
+        transition: all 0.2s ease;
+        outline: none;
+        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.25),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #4ade80, #22c55e);
+        box-shadow: 0 6px 25px rgba(57, 255, 20, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
+      }
+
+      .btn-primary:focus-visible {
+        outline: 2px solid var(--neon-green);
+        outline-offset: 3px;
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.06);
+        color: #94a3b8;
+        font-weight: 500;
+        padding: 0.5rem 1.25rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        font-size: 0.875rem;
+        transition: all 0.2s ease;
+        outline: none;
+        backdrop-filter: blur(4px);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #e2e8f0;
+        border-color: rgba(255, 255, 255, 0.18);
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary:active {
+        transform: translateY(0);
+      }
+
+      .btn-secondary:focus-visible {
+        outline: 2px solid rgba(255, 255, 255, 0.4);
+        outline-offset: 3px;
+      }
+
+      .btn-danger {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: #fff;
+        font-weight: 600;
+        padding: 0.625rem 1.5rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9rem;
+        letter-spacing: 0.03em;
+        transition: all 0.2s ease;
+        outline: none;
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.25);
+      }
+
+      .btn-danger:hover {
+        background: linear-gradient(135deg, #f87171, #ef4444);
+        box-shadow: 0 6px 25px rgba(255, 45, 85, 0.4);
+        transform: translateY(-1px);
+      }
+
+      .btn-danger:active {
+        transform: translateY(0);
+      }
+
+      .btn-danger:focus-visible {
+        outline: 2px solid var(--neon-red);
+        outline-offset: 3px;
+      }
+
+      /* ─── Difficulty Selector ────────────────────────────────────────── */
+      .diff-btn {
+        padding: 0.4rem 1rem;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        color: #64748b;
+        font-size: 0.8rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        outline: none;
+        letter-spacing: 0.02em;
+      }
+
+      .diff-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #94a3b8;
+      }
+
+      .diff-btn.active {
+        background: rgba(57, 255, 20, 0.12);
+        border-color: rgba(57, 255, 20, 0.4);
+        color: var(--neon-green);
+        box-shadow: 0 0 10px rgba(57, 255, 20, 0.1);
+      }
+
+      .diff-btn:focus-visible {
+        outline: 2px solid rgba(57, 255, 20, 0.6);
+        outline-offset: 2px;
+      }
+
+      /* ─── Score Display ─────────────────────────────────────────────── */
+      .score-value {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--neon-green);
+        line-height: 1;
+        text-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
+        display: inline-block;
+      }
+
+      .score-value.pop {
+        animation: score-pop 0.3s ease-out forwards;
+      }
+
+      .high-score-value {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fbbf24;
+        line-height: 1;
+        text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+      }
+
+      /* ─── Title ─────────────────────────────────────────────────────── */
+      .game-title {
+        font-size: 2rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        background: linear-gradient(135deg, #39ff14, #00d4ff 60%, #bf5fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: flicker 3s linear infinite;
+        line-height: 1;
+      }
+
+      /* ─── Status Bar ─────────────────────────────────────────────────── */
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+      }
+
+      .status-badge.playing {
+        background: rgba(57, 255, 20, 0.12);
+        border: 1px solid rgba(57, 255, 20, 0.3);
+        color: var(--neon-green);
+      }
+
+      .status-badge.paused {
+        background: rgba(251, 191, 36, 0.12);
+        border: 1px solid rgba(251, 191, 36, 0.3);
+        color: #fbbf24;
+      }
+
+      .status-badge.idle {
+        background: rgba(100, 116, 139, 0.12);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        color: #64748b;
+      }
+
+      .status-badge.dead {
+        background: rgba(255, 45, 85, 0.12);
+        border: 1px solid rgba(255, 45, 85, 0.3);
+        color: #ff2d55;
+      }
+
+      .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+        flex-shrink: 0;
+      }
+
+      .status-badge.playing .status-dot {
+        animation: pulse 1.2s ease-in-out infinite;
+      }
+
+      /* ─── Shake Animation (Game Over) ───────────────────────────────── */
+      .shake {
+        animation: game-over-shake 0.4s ease-in-out;
+      }
+
+      /* ─── Controls Reference ────────────────────────────────────────── */
+      .key-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 26px;
+        height: 26px;
+        padding: 0 6px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        color: #94a3b8;
+        font-weight: 600;
+      }
+
+      /* ─── Responsive Board ───────────────────────────────────────────── */
+      @media (max-width: 640px) {
+        :root {
+          --cell-size: 16px;
+        }
+        .game-title {
+          font-size: 1.5rem;
+        }
+        .score-value {
+          font-size: 1.4rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        :root {
+          --cell-size: 14px;
+        }
+      }
+
+      /* ─── Hidden Utility ─────────────────────────────────────────────── */
+      .hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+
+  <body class="text-slate-100 min-h-screen flex items-center justify-center p-4">
+    <!-- Animated background scene -->
+    <div class="bg-scene" aria-hidden="true"></div>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Main Layout                                                        -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <main
+      class="relative z-10 w-full flex flex-col items-center gap-5 max-w-xl"
+    >
+      <!-- ── Header ──────────────────────────────────────────────────── -->
+      <header class="w-full text-center">
+        <h1 class="game-title" id="game-title-text">NeonSnake</h1>
+        <p class="text-slate-500 text-sm mt-1 font-light tracking-wider">
+          A modern classic, reimagined
+        </p>
+      </header>
+
+      <!-- ── Scoreboard ───────────────────────────────────────────────── -->
+      <section
+        class="glass-card rounded-2xl w-full px-5 py-4 flex items-center justify-between"
+        aria-label="Scoreboard"
+      >
+        <!-- Score -->
+        <div class="flex flex-col items-center gap-1">
+          <span class="text-slate-500 text-xs font-semibold uppercase tracking-widest"
+            >Score</span
+          >
+          <span
+            class="score-value"
+            id="score-display"
+            aria-live="polite"
+            aria-label="Current score"
+            >0</span
+          >
+        </div>
+
+        <!-- Status Badge (center) -->
+        <div id="status-badge" class="status-badge idle" aria-live="polite">
+          <div class="status-dot" aria-hidden="true"></div>
+          <span id="status-text">Ready</span>
+        </div>
+
+        <!-- High Score -->
+        <div class="flex flex-col items-center gap-1">
+          <span class="text-slate-500 text-xs font-semibold uppercase tracking-widest"
+            >Best</span
+          >
+          <span
+            class="high-score-value"
+            id="high-score-display"
+            aria-label="High score"
+            >0</span
+          >
+        </div>
+      </section>
+
+      <!-- ── Game Board Container ──────────────────────────────────────── -->
+      <div class="glass-card rounded-2xl p-3 w-full flex justify-center">
+        <div id="game-board-wrapper" class="relative">
+          <!-- The game board is dynamically sized via JS -->
+          <div id="game-board" role="application" aria-label="Snake game board">
+            <!-- Snake cells and food are injected here by JavaScript -->
+
+            <!-- ── Start Screen Overlay ─────────────────────────────── -->
+            <div id="overlay-start" class="overlay-panel">
+              <div class="overlay-content">
+                <div class="text-5xl mb-4" role="img" aria-label="Snake emoji">🐍</div>
+                <h2 class="text-2xl font-bold text-white mb-2">Ready to Play?</h2>
+                <p class="text-slate-400 text-sm mb-6 max-w-xs mx-auto leading-relaxed">
+                  Guide the neon snake, eat glowing food, and beat your high score!
+                </p>
+                <button
+                  id="btn-start"
+                  class="btn-primary text-base px-8 py-3"
+                  aria-label="Start the game"
+                >
+                  Start Game
+                </button>
+              </div>
+            </div>
+
+            <!-- ── Pause Screen Overlay ────────────────────────────── -->
+            <div id="overlay-pause" class="overlay-panel hidden">
+              <div class="overlay-content">
+                <div class="text-4xl mb-4" role="img" aria-label="Pause icon">⏸</div>
+                <h2 class="text-2xl font-bold text-white mb-2">Paused</h2>
+                <p class="text-slate-400 text-sm mb-6">
+                  Take a breath. The snake is waiting.
+                </p>
+                <button
+                  id="btn-resume"
+                  class="btn-primary px-8 py-3"
+                  aria-label="Resume the game"
+                >
+                  Resume
+                </button>
+              </div>
+            </div>
+
+            <!-- ── Game Over Screen Overlay ────────────────────────── -->
+            <div id="overlay-gameover" class="overlay-panel hidden">
+              <div class="overlay-content">
+                <div class="text-4xl mb-3" role="img" aria-label="Skull emoji">💀</div>
+                <h2
+                  class="text-2xl font-bold mb-1"
+                  style="color: var(--neon-red)"
+                >
+                  Game Over
+                </h2>
+                <p class="text-slate-400 text-sm mb-4">
+                  Your snake met its fate.
+                </p>
+                <!-- Final score display in overlay -->
+                <div class="mb-2">
+                  <span class="text-slate-500 text-xs uppercase tracking-widest"
+                    >Final Score</span
+                  >
+                  <div
+                    id="final-score"
+                    class="score-value text-4xl mt-1"
+                    aria-label="Final score"
+                  >0</div>
+                </div>
+                <!-- New high score badge -->
+                <div
+                  id="new-highscore-badge"
+                  class="hidden mb-4 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest"
+                  style="
+                    background: rgba(251, 191, 36, 0.15);
+                    border: 1px solid rgba(251, 191, 36, 0.4);
+                    color: #fbbf24;
+                  "
+                  aria-live="polite"
+                >
+                  🏆 New High Score!
+                </div>
+                <div class="flex gap-3 mt-5">
+                  <button
+                    id="btn-restart"
+                    class="btn-primary px-6 py-2.5"
+                    aria-label="Restart the game"
+                  >
+                    Play Again
+                  </button>
+                  <button
+                    id="btn-mainmenu"
+                    class="btn-secondary px-6 py-2.5"
+                    aria-label="Return to main menu"
+                  >
+                    Menu
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /#game-board -->
+        </div>
+      </div>
+
+      <!-- ── Controls Row ─────────────────────────────────────────────── -->
+      <section class="glass-card rounded-2xl w-full px-5 py-4" aria-label="Game controls">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <!-- Difficulty Selector -->
+          <div class="flex items-center gap-2" role="group" aria-label="Difficulty level">
+            <span class="text-slate-500 text-xs font-semibold uppercase tracking-widest mr-1"
+              >Speed</span
+            >
+            <button
+              id="diff-easy"
+              class="diff-btn active"
+              aria-pressed="true"
+              aria-label="Easy difficulty"
+            >
+              Easy
+            </button>
+            <button
+              id="diff-medium"
+              class="diff-btn"
+              aria-pressed="false"
+              aria-label="Medium difficulty"
+            >
+              Medium
+            </button>
+            <button
+              id="diff-hard"
+              class="diff-btn"
+              aria-pressed="false"
+              aria-label="Hard difficulty"
+            >
+              Hard
+            </button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex gap-2">
+            <button
+              id="btn-pause-top"
+              class="btn-secondary text-xs px-4 py-2 hidden"
+              aria-label="Pause the game"
+            >
+              Pause
+            </button>
+            <button
+              id="btn-restart-top"
+              class="btn-secondary text-xs px-4 py-2 hidden"
+              aria-label="Restart the game"
+            >
+              Restart
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Controls Reference ────────────────────────────────────────── -->
+      <section
+        class="w-full text-center"
+        aria-label="Keyboard controls reference"
+      >
+        <div
+          class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-slate-600 text-xs"
+        >
+          <span class="flex items-center gap-1.5">
+            <span class="key-badge">W</span>
+            <span class="key-badge">A</span>
+            <span class="key-badge">S</span>
+            <span class="key-badge">D</span>
+            <span class="ml-1 text-slate-500">or</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="key-badge">↑</span>
+            <span class="key-badge">←</span>
+            <span class="key-badge">↓</span>
+            <span class="key-badge">→</span>
+            <span class="ml-1 text-slate-500">Move</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="key-badge">P</span>
+            <span class="ml-1 text-slate-500">Pause</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="key-badge">R</span>
+            <span class="ml-1 text-slate-500">Restart</span>
+          </span>
+        </div>
+      </section>
+
+      <!-- ── Footer ───────────────────────────────────────────────────── -->
+      <footer class="mt-4 text-center text-slate-700 text-xs space-y-3 pb-4">
+        <div class="flex justify-center gap-6 font-medium">
+          <a href="index.html" class="text-[#39ff14] transition-colors" aria-label="Game">Game</a>
+          <a href="about.html" class="text-slate-500 hover:text-[#39ff14] transition-colors" aria-label="About">About</a>
+          <a href="terms.html" class="text-slate-500 hover:text-[#39ff14] transition-colors" aria-label="Terms">Terms</a>
+          <a href="privacy.html" class="text-slate-500 hover:text-[#39ff14] transition-colors" aria-label="Privacy">Privacy</a>
+        </div>
+        <p>NeonSnake &mdash; Built with HTML, Tailwind CSS &amp; Vanilla JS</p>
+        <p>&copy; 2026 NeonSnake. All rights reserved.</p>
+      </footer>
+    </main>
+
+    <!-- ── JavaScript Entry Point ──────────────────────────────────────── -->
+    <script src="script.js"></script>
+  </body>
+</html>
