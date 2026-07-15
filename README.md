@@ -1,5 +1,6 @@
 # 🐍 NeonSnake
 Play Now 
+
 https://neon-snake-ashy.vercel.app/
 
 > A modern, production-quality Snake game built with pure HTML, Tailwind CSS (CDN), and vanilla JavaScript — no frameworks, no libraries, no build tools required.
