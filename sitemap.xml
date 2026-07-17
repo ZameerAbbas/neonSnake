@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   NeonSnake — sitemap.xml
-  IMPORTANT: Replace YOUR_DOMAIN with your actual domain after hosting.
+  IMPORTANT: Replace easypdf.fit with your actual domain after hosting.
   Submit this URL to Google Search Console after deploying:
-  https://YOUR_DOMAIN/sitemap.xml
+  https://easypdf.fit/sitemap.xml
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://YOUR_DOMAIN/</loc>
+    <loc>https://easypdf.fit/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://YOUR_DOMAIN/about.html</loc>
+    <loc>https://easypdf.fit/about.html</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://YOUR_DOMAIN/terms.html</loc>
+    <loc>https://easypdf.fit/terms.html</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://YOUR_DOMAIN/privacy.html</loc>
+    <loc>https://easypdf.fit/privacy.html</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

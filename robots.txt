@@ -1,8 +1,8 @@
 # NeonSnake — robots.txt
-# IMPORTANT: Replace YOUR_DOMAIN with your actual domain after hosting.
+# IMPORTANT: Replace easypdf.fit with your actual domain after hosting.
 
 User-agent: *
 Allow: /
 
 # Sitemap location — helps Google find and index the site faster
-Sitemap: https://YOUR_DOMAIN/sitemap.xml
+Sitemap: https://easypdf.fit/sitemap.xml
