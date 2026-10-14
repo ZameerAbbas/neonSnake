@@ -3,29 +3,29 @@
   NeonSnake — sitemap.xml
   IMPORTANT: Replace easypdf.fit with your actual domain after hosting.
   Submit this URL to Google Search Console after deploying:
-  https://easypdf.fit/sitemap.xml
+  https://neon-snake-ashy.vercel.app/sitemap.xml
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://easypdf.fit/</loc>
+    <loc>https://neon-snake-ashy.vercel.app/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://easypdf.fit/about.html</loc>
+    <loc>https://neon-snake-ashy.vercel.app/about.html</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://easypdf.fit/terms.html</loc>
+    <loc>https://neon-snake-ashy.vercel.app/terms.html</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://easypdf.fit/privacy.html</loc>
+    <loc>https://neon-snake-ashy.vercel.app/privacy.html</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

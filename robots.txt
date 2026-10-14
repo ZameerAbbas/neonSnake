@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location — helps Google find and index the site faster
-Sitemap: https://easypdf.fit/sitemap.xml
+Sitemap: https://neon-snake-ashy.vercel.app/sitemap.xml
